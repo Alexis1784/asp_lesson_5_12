@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using asp_lesson_5_12.Models;
 
 namespace asp_lesson_5_12.Controllers
 {
     public class HomeController : Controller
     {
+        BookContext db = new BookContext();       
         public ActionResult Index()
         {
             return View();
@@ -17,7 +19,7 @@ namespace asp_lesson_5_12.Controllers
         {
             ViewBag.Message = "Your application description page.";
 
-            return View();
+            return View(new Book());
         }
 
         public ActionResult Contact()
@@ -26,5 +28,15 @@ namespace asp_lesson_5_12.Controllers
 
             return View();
         }
+        [HttpPost]
+        public ActionResult Contact(Book book)
+        {
+            db.Books.Add(book);
+            db.SaveChanges();
+            return View("ResultOfAdding", book);
+        }
+
+         
+
     }
 }

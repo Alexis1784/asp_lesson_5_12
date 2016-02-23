@@ -1,7 +1,23 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿@using asp_lesson_5_12.Models
+@model Book
 
-<p>Use this area to provide additional information.</p>
+@{
+    ViewBag.Title = "Display";
+}
+
+<h2>Display</h2>
+
+<div>
+    <div>
+        <p>
+            Id: @Html.DisplayFor(model => model.Id)
+        </p>
+        <p>
+            Название: @Html.DisplayFor(model => model.Name)
+        </p>
+        <p>
+            Цена: @Html.DisplayFor(model => model.Price)
+        </p>
+
+    </div>
+</div>
